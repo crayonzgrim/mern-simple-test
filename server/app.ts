@@ -1,17 +1,14 @@
 import express, { Express, Request, Response } from 'express'
 import mongoose from 'mongoose'
-import { getBookRouter, addBookRouter } from './routes'
+import { getAllRouter, addBookRouter, getBookRouter } from './routes'
 
 const app: Express = express()
 
 const PORT = process.env.PORT || 5000
 
-// Middlewares
-// app.get('/', (req: Request, res: Response) => {
-//   res.send('Express + TS server')
-// })
 app.use(express.json())
-app.use('/books', getBookRouter)
+app.use('/books', getAllRouter)
+// app.use('/books/:id', getBookRouter)
 
 mongoose.set('strictQuery', true)
 
